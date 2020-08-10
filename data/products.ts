@@ -1,4 +1,6 @@
-export const products = [
+import { ProductObj } from "../types";
+
+export const products: Array<ProductObj> = [
   {
     id: Math.random().toString(),
     name: "Ikea Armchair",
@@ -40,18 +42,22 @@ export const products = [
       {
         id: "0",
         source: require("../assets/images/products/urbanears_blue.png"),
+        color: "blue",
       },
       {
         id: "1",
         source: require("../assets/images/products/urbanears_grey.png"),
+        color: "grey",
       },
       {
         id: "2",
         source: require("../assets/images/products/urbanears_pink.png"),
+        color: "pink",
       },
       {
         id: "3",
         source: require("../assets/images/products/urbanears_mint.png"),
+        color: "mint",
       },
     ],
     price: 80,

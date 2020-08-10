@@ -6,14 +6,17 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import { BottomTabParamList, HomeStackParamsList } from "../types";
-import { HomeScreen } from "../screens";
+import { HomeScreen, ProductScreen } from "../screens";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const HomeStack = createStackNavigator<HomeStackParamsList>();
 
 const BottomTabNavigator = () => {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+      tabBarOptions={{ keyboardHidesTabBar: true }}
+      screenOptions={{ tabBarVisible: false }}
+    >
       <BottomTab.Screen name="Home" component={HomeNavigator} />
     </BottomTab.Navigator>
   );
@@ -28,6 +31,7 @@ const HomeNavigator = () => {
       }}
     >
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Product" component={ProductScreen} />
     </HomeStack.Navigator>
   );
 };
