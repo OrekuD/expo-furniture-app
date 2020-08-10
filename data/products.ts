@@ -57,7 +57,7 @@ export const products: Array<ProductObj> = [
       {
         id: "3",
         source: require("../assets/images/products/urbanears_mint.png"),
-        color: "mint",
+        color: "#86A384",
       },
     ],
     price: 80,

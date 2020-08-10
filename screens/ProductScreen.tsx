@@ -1,35 +1,39 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView, Animated } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { height, width } from "../constants/Layout";
 
 const IMAGE_WIDTH = width * 0.6;
-const DOT_SIZE = 8;
+const DOT_SIZE = 10;
+const ACTIVE_DOT_SIZE = DOT_SIZE * 3;
 
 const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const { data } = route.params;
   const { images, name, price } = data;
+
+  const activeDotInputRange = [-width, 0, width];
+  const activeDotTranslateX = scrollX.interpolate({
+    inputRange: activeDotInputRange,
+    outputRange: [-ACTIVE_DOT_SIZE, 0, ACTIVE_DOT_SIZE],
+  });
   return (
     <ScrollView style={styles.container}>
       <View style={styles.topSection}>
         <View style={styles.pagination}>
-          {images.map((_, index) => {
-            const inputRange = [
-              (index - 1) * width,
-              index * width,
-              (index + 1) * width,
-            ];
-            const opacity = scrollX.interpolate({
-              inputRange,
-              outputRange: [0.5, 1, 0.5],
-              extrapolate: "clamp",
-            });
+          <Animated.View
+            style={{
+              ...styles.activeDot,
+              transform: [{ translateX: activeDotTranslateX }],
+            }}
+          />
+          {images.map(({ color }, index) => {
             return (
-              <Animated.View
-                key={index}
-                style={{ ...styles.dot, opacity }}
-              ></Animated.View>
+              <View key={index} style={styles.dotContainer}>
+                <Animated.View
+                  style={{ ...styles.dot, backgroundColor: color }}
+                ></Animated.View>
+              </View>
             );
           })}
         </View>
@@ -43,12 +47,29 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
           )}
         >
           {images.map(({ source }, index) => {
+            const inputRange = [
+              (index - 1) * width,
+              index * width,
+              (index + 1) * width,
+            ];
+            const opacity = scrollX.interpolate({
+              inputRange,
+              outputRange: [0.2, 1, 0.2],
+              extrapolate: "clamp",
+            });
+
+            const scale = scrollX.interpolate({
+              inputRange,
+              outputRange: [0.2, 1, 0.2],
+              extrapolate: "clamp",
+            });
+
             return (
               <View style={styles.imageContainer} key={index}>
                 <Animated.Image
                   source={source}
                   resizeMode="contain"
-                  style={{ ...styles.image }}
+                  style={{ ...styles.image, opacity, transform: [{ scale }] }}
                 />
               </View>
             );
@@ -86,14 +107,27 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 10,
     right: 10,
-    // paddingHorizontal: 10,
     flexDirection: "row",
+  },
+  dotContainer: {
+    width: DOT_SIZE * 3,
+    height: DOT_SIZE * 3,
+    borderRadius: DOT_SIZE * 1.5,
+    alignItems: "center",
+    justifyContent: "center",
   },
   dot: {
     width: DOT_SIZE,
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
     backgroundColor: "purple",
-    marginRight: DOT_SIZE,
+  },
+  activeDot: {
+    position: "absolute",
+    width: ACTIVE_DOT_SIZE,
+    height: ACTIVE_DOT_SIZE,
+    borderRadius: ACTIVE_DOT_SIZE * 0.5,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "purple",
   },
 });
