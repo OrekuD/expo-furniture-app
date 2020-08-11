@@ -12,14 +12,6 @@ export const products: Array<ProductObj> = [
         id: "0",
         source: require("../assets/images/products/ikea-ps-2012-armchair__1.webp"),
       },
-      {
-        id: "1",
-        source: require("../assets/images/products/ikea-ps-2012-armchair__2.jpg"),
-      },
-      {
-        id: "2",
-        source: require("../assets/images/products/ikea-ps-2012-armchair__3.jpg"),
-      },
     ],
   },
   {

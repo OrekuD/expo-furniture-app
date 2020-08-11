@@ -30,25 +30,27 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
             style={styles.priceText}
           />
         </View>
-        {images[0].color && (
-          <View style={styles.pagination}>
-            <Animated.View
-              style={{
-                ...styles.activeDot,
-                transform: [{ translateX: activeDotTranslateX }],
-              }}
-            />
-            {images.map(({ color }, index) => {
-              return (
-                <View key={index} style={styles.dotContainer}>
-                  <Animated.View
-                    style={{ ...styles.dot, backgroundColor: color }}
-                  ></Animated.View>
-                </View>
-              );
-            })}
-          </View>
-        )}
+
+        <View style={styles.pagination}>
+          <Animated.View
+            style={{
+              ...styles.activeDot,
+              transform: [{ translateX: activeDotTranslateX }],
+            }}
+          />
+          {images.map(({ color }, index) => {
+            return (
+              <View key={index} style={styles.dotContainer}>
+                <Animated.View
+                  style={{
+                    ...styles.dot,
+                    backgroundColor: color ? color : "purple",
+                  }}
+                ></Animated.View>
+              </View>
+            );
+          })}
+        </View>
         <Animated.ScrollView
           pagingEnabled
           horizontal
