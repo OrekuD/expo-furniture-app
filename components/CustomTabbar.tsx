@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Text,
   View,
@@ -15,7 +15,8 @@ import {
   NavigationHelpers,
   TabNavigationState,
 } from "@react-navigation/native";
-import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons, Feather } from "@expo/vector-icons";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 interface CustomTabProps {
   state: TabNavigationState;
@@ -26,31 +27,59 @@ interface CustomTabProps {
   >;
 }
 
+const Icon = ({ name, color }: { name: string; color: string }) => {
+  if (name === "Home") {
+    return <Feather name="home" color={color} size={26} />;
+  } else if (name === "Cart") {
+    return <MaterialCommunityIcons name="shopping" color={color} size={28} />;
+  } else {
+    return <View />;
+  }
+};
+
+const routes = [
+  {
+    id: "0",
+    name: "Home",
+  },
+  {
+    id: "1",
+    name: "Cart",
+  },
+];
+
 const CustomTab = ({ state, descriptors, navigation }: CustomTabProps) => {
-  const routes = [
-    {
-      id: "0",
-      icon: <AntDesign name="home" color="#121212" size={30} />,
-      name: "Home",
-    },
-    {
-      id: "1",
-      icon: (
-        <MaterialCommunityIcons name="shopping" color="#121212" size={30} />
-      ),
-      name: "Cart",
-    },
-  ];
+  const translateY = useRef(new Animated.Value(70)).current;
+
+  const animateTabbar = (state: "hide" | "show") => {
+    if (state === "hide") {
+      Animated.timing(translateY, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+    } else if (state === "show") {
+      Animated.timing(translateY, {
+        toValue: 70,
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+    }
+  };
 
   return (
-    <Animated.View style={styles.container}>
-      {routes.map(({ id, icon, name }, index) => {
+    <Animated.View style={{ ...styles.container, height: translateY }}>
+      {routes.map(({ id, name }, index) => {
         const isFocused = state.index === index;
+        const color = isFocused ? "purple" : "#121212";
         return (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(name)}
-            key={id}
-          ></TouchableOpacity>
+          <BorderlessButton onPress={() => navigation.navigate(name)} key={id}>
+            <View
+              style={{ ...styles.tab, borderBottomWidth: isFocused ? 4 : 0 }}
+            >
+              <Icon name={name} color={color} />
+            </View>
+          </BorderlessButton>
         );
       })}
     </Animated.View>
@@ -61,11 +90,20 @@ export default CustomTab;
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+    height: 70,
     width: width,
-    backgroundColor: "grey",
+    backgroundColor: "#f8f8f8",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+  },
+  tab: {
+    height: "100%",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingTop: 20,
+    borderColor: "purple",
+    paddingBottom: 2,
+    alignItems: "center",
   },
 });
