@@ -73,35 +73,6 @@ export const products: Array<ProductObj> = [
   },
   {
     id: Math.random().toString(),
-    name: "Volfgang Chair",
-    price: 89.99,
-    description:
-      "Consequat minim nostrud aliqua cupidatat ullamco sit eu nisi aliquip aliquip aute. Minim sunt occaecat enim labore veniam incididunt aliquip adipisicing in eiusmod amet adipisicing.",
-    images: [
-      {
-        id: "0",
-        source: require("../assets/images/products/volfgang-chair__1.webp"),
-        color: "#B6B4B3",
-      },
-      {
-        id: "1",
-        source: require("../assets/images/products/volfgang-chair__2.webp"),
-        color: "#646466",
-      },
-      {
-        id: "2",
-        source: require("../assets/images/products/volfgang-chair__3.webp"),
-        color: "#CEC7BE",
-      },
-      {
-        id: "3",
-        source: require("../assets/images/products/volfgang-chair__4.webp"),
-        color: "#433F3E",
-      },
-    ],
-  },
-  {
-    id: Math.random().toString(),
     name: "Leifarne Armchair",
     price: 299.99,
     description:
@@ -179,6 +150,33 @@ export const products: Array<ProductObj> = [
   },
   {
     id: Math.random().toString(),
+    name: "Roenninge Chair Birch",
+    price: 299.99,
+    description:
+      "Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+    images: [
+      {
+        id: "0",
+        source: require("../assets/images/products/roenninge-chair-birch__1.webp"),
+        color: "#E2C39E",
+      },
+      {
+        id: "1",
+        source: require("../assets/images/products/roenninge-chair-birch__2.webp"),
+        color: "#60735F",
+      },
+      {
+        id: "2",
+        source: require("../assets/images/products/roenninge-chair-birch__3.webp"),
+        color: "#2A2A28",
+      },
+    ],
+  },
+];
+
+export const recommendedProducts = [
+  {
+    id: Math.random().toString(),
     name: "Sofa",
     price: 299.99,
     description:
@@ -203,25 +201,30 @@ export const products: Array<ProductObj> = [
   },
   {
     id: Math.random().toString(),
-    name: "Roenninge Chair Birch",
-    price: 299.99,
+    name: "Volfgang Chair",
+    price: 89.99,
     description:
-      "Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Consequat minim nostrud aliqua cupidatat ullamco sit eu nisi aliquip aliquip aute. Minim sunt occaecat enim labore veniam incididunt aliquip adipisicing in eiusmod amet adipisicing.",
     images: [
       {
         id: "0",
-        source: require("../assets/images/products/roenninge-chair-birch__1.webp"),
-        color: "#E2C39E",
+        source: require("../assets/images/products/volfgang-chair__1.webp"),
+        color: "#B6B4B3",
       },
       {
         id: "1",
-        source: require("../assets/images/products/roenninge-chair-birch__2.webp"),
-        color: "#60735F",
+        source: require("../assets/images/products/volfgang-chair__2.webp"),
+        color: "#646466",
       },
       {
         id: "2",
-        source: require("../assets/images/products/roenninge-chair-birch__3.webp"),
-        color: "#2A2A28",
+        source: require("../assets/images/products/volfgang-chair__3.webp"),
+        color: "#CEC7BE",
+      },
+      {
+        id: "3",
+        source: require("../assets/images/products/volfgang-chair__4.webp"),
+        color: "#433F3E",
       },
     ],
   },

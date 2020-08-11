@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { products } from "../data/products";
-import { Card } from "../components";
+import { Card, Header } from "../components";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { width } from "../constants/Layout";
 
@@ -13,6 +13,7 @@ const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
       <FlatList
         data={products}
         renderItem={({ item }) => <Card data={item} navigation={navigation} />}
+        ListHeaderComponent={() => <Header navigation={navigation} />}
         keyExtractor={({ id }) => id}
         numColumns={2}
         columnWrapperStyle={styles.row}

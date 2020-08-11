@@ -5,6 +5,7 @@ import { height, width } from "../constants/Layout";
 import { Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAppContext } from "../context/Context";
+import { RectButton } from "react-native-gesture-handler";
 
 const IMAGE_SIZE = width * 0.7;
 const DOT_SIZE = 10;
@@ -23,6 +24,14 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
     outputRange: [-ACTIVE_DOT_SIZE, 0, ACTIVE_DOT_SIZE],
   });
 
+  const activeDotColorInputRange = [...images.map((_, index) => index * width)];
+  const activeDotColorOutputRange = [...images.map((image) => image.color)];
+
+  const activeDotColor = scrollX.interpolate({
+    inputRange: activeDotColorInputRange,
+    outputRange: activeDotColorOutputRange,
+  });
+
   useEffect(() => {
     toggleTabbar("hide");
 
@@ -39,6 +48,7 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
             style={{
               ...styles.activeDot,
               transform: [{ translateX: activeDotTranslateX }],
+              borderColor: activeDotColor,
             }}
           />
           {images.map(({ color }, index) => {
@@ -96,6 +106,9 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
       <View style={styles.bottomSection}>
         <Text text={name} variant="title" />
         <Text text={description} />
+        <RectButton style={styles.button}>
+          <Text text="Add to cart" variant="tiny" style={styles.buttonText} />
+        </RectButton>
       </View>
     </ScrollView>
   );
@@ -118,7 +131,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     left: 10,
-    // backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -166,7 +178,20 @@ const styles = StyleSheet.create({
     width: ACTIVE_DOT_SIZE,
     height: ACTIVE_DOT_SIZE,
     borderRadius: ACTIVE_DOT_SIZE * 0.5,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "purple",
+    borderWidth: 2,
+  },
+  button: {
+    width: width * 0.8,
+    height: 40,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+    backgroundColor: "purple",
+    alignSelf: "center",
+  },
+  buttonText: {
+    fontSize: 16,
+    color: "#ffffff",
   },
 });
