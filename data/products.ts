@@ -6,7 +6,7 @@ export const products: Array<ProductObj> = [
     name: "Fanbyn Bar Stool",
     price: 249.99,
     description:
-      "Aliquip irure nisi proident commodo sunt officia veniam incididunt. Lorem do reprehenderit aliquip duis incididunt. Consequat ex consectetur laborum labore consectetur adipisicing occaecat dolore eiusmod consequat voluptate veniam aliquip. Eiusmod excepteur amet elit non do mollit irure excepteur officia laboris. Commodo occaecat veniam consequat mollit do dolor deserunt magna nisi nulla sint eu anim cillum. Do ea est sint sint laboris eu officia veniam. Cupidatat amet fugiat incididunt occaecat sint eiusmod anim.",
+      "Do ea est sint sint laboris eu officia veniam. Cupidatat amet fugiat incididunt occaecat sint eiusmod anim.",
     images: [
       {
         id: "0",
@@ -25,7 +25,7 @@ export const products: Array<ProductObj> = [
     name: "Ikea Armchair",
     price: 249.99,
     description:
-      "Aliquip irure nisi proident commodo sunt officia veniam incididunt. Lorem do reprehenderit aliquip duis incididunt. Consequat ex consectetur laborum labore consectetur adipisicing occaecat dolore eiusmod consequat voluptate veniam aliquip. Eiusmod excepteur amet elit non do mollit irure excepteur officia laboris. Commodo occaecat veniam consequat mollit do dolor deserunt magna nisi nulla sint eu anim cillum. Do ea est sint sint laboris eu officia veniam. Cupidatat amet fugiat incididunt occaecat sint eiusmod anim.",
+      "Do ea est sint sint laboris eu officia veniam. Cupidatat amet fugiat incididunt occaecat sint eiusmod anim.",
     images: [
       {
         id: "0",
@@ -38,7 +38,7 @@ export const products: Array<ProductObj> = [
     name: "Janinge Chair",
     price: 149.99,
     description:
-      "Anim consequat Lorem aliqua sint enim esse cupidatat consectetur consectetur. Velit esse nulla aute anim tempor. Esse ex eiusmod ea non ut non ad in aliqua anim adipisicing id anim non. Occaecat nulla et enim anim consequat nisi aliquip dolor laborum et dolor nostrud consectetur aute.",
+      "Commodo incididunt quis occaecat cupidatat Lorem non culpa voluptate eu commodo amet. Occaecat nulla et enim anim consequat nisi aliquip dolor laborum et dolor nostrud consectetur aute.",
     images: [
       {
         id: "0",
@@ -57,7 +57,7 @@ export const products: Array<ProductObj> = [
     name: "Janinge Bar Stool",
     price: 149.99,
     description:
-      "Sit eiusmod eu amet dolore incididunt ea cillum fugiat in duis in sit. Laborum nisi nisi aliquip cupidatat amet occaecat mollit amet sit nisi veniam do cupidatat. Aute non nisi est reprehenderit amet consectetur consequat eu labore labore. Dolor enim ut reprehenderit velit elit Lorem irure esse officia exercitation enim. Commodo occaecat qui eiusmod aliquip est velit officia voluptate aute eiusmod tempor ad ex. Irure excepteur cupidatat ut eu adipisicing eu irure enim cillum consectetur.",
+      "Commodo occaecat qui eiusmod aliquip est velit officia voluptate aute eiusmod tempor ad ex. Irure excepteur cupidatat ut eu adipisicing eu irure enim cillum consectetur.",
     images: [
       {
         id: "0",
@@ -76,7 +76,7 @@ export const products: Array<ProductObj> = [
     name: "Volfgang Chair",
     price: 89.99,
     description:
-      "Esse culpa dolore anim irure. Amet labore laborum quis excepteur nulla fugiat reprehenderit dolore cillum laboris nostrud officia eiusmod. Est consectetur anim proident pariatur occaecat eiusmod sint quis. Est cillum incididunt consequat irure. Adipisicing dolore ea anim exercitation. Consequat minim nostrud aliqua cupidatat ullamco sit eu nisi aliquip aliquip aute. Minim sunt occaecat enim labore veniam incididunt aliquip adipisicing in eiusmod amet adipisicing.",
+      "Consequat minim nostrud aliqua cupidatat ullamco sit eu nisi aliquip aliquip aute. Minim sunt occaecat enim labore veniam incididunt aliquip adipisicing in eiusmod amet adipisicing.",
     images: [
       {
         id: "0",
@@ -105,7 +105,7 @@ export const products: Array<ProductObj> = [
     name: "Leifarne Armchair",
     price: 299.99,
     description:
-      "Quis voluptate commodo consequat in nisi ad proident ea. Minim cupidatat qui amet in. Pariatur fugiat enim sunt id Lorem cupidatat. Tempor qui anim officia do irure consectetur cillum occaecat cillum. Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
     images: [
       {
         id: "0",
@@ -129,7 +129,7 @@ export const products: Array<ProductObj> = [
     name: "Adde chair",
     price: 99.99,
     description:
-      "Quis voluptate commodo consequat in nisi ad proident ea. Minim cupidatat qui amet in. Pariatur fugiat enim sunt id Lorem cupidatat. Tempor qui anim officia do irure consectetur cillum occaecat cillum. Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
     images: [
       {
         id: "0",
@@ -153,7 +153,7 @@ export const products: Array<ProductObj> = [
     name: "Terje Folding Chair",
     price: 299.99,
     description:
-      "Quis voluptate commodo consequat in nisi ad proident ea. Minim cupidatat qui amet in. Pariatur fugiat enim sunt id Lorem cupidatat. Tempor qui anim officia do irure consectetur cillum occaecat cillum. Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
     images: [
       {
         id: "0",
@@ -182,7 +182,7 @@ export const products: Array<ProductObj> = [
     name: "Sofa",
     price: 299.99,
     description:
-      "Quis voluptate commodo consequat in nisi ad proident ea. Minim cupidatat qui amet in. Pariatur fugiat enim sunt id Lorem cupidatat. Tempor qui anim officia do irure consectetur cillum occaecat cillum. Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
     images: [
       {
         id: "0",
@@ -206,7 +206,7 @@ export const products: Array<ProductObj> = [
     name: "Roenninge Chair Birch",
     price: 299.99,
     description:
-      "Quis voluptate commodo consequat in nisi ad proident ea. Minim cupidatat qui amet in. Pariatur fugiat enim sunt id Lorem cupidatat. Tempor qui anim officia do irure consectetur cillum occaecat cillum. Sint ea sit proident Lorem id est amet amet occaecat eiusmod. Laboris adipisicing sint reprehenderit cupidatat velit veniam aliquip do incididunt minim proident. Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
+      "Elit tempor eiusmod reprehenderit mollit nostrud duis qui irure officia consequat tempor eiusmod.",
     images: [
       {
         id: "0",

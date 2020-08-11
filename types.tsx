@@ -30,3 +30,8 @@ export interface ProductObj {
   price: number;
   description?: string;
 }
+
+export interface AppContext {
+  toggleTabbar: (state: "hide" | "show") => void;
+  tabbarState: "hide" | "show";
+}

@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { products } from "../data/products";
 import { Card } from "../components";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { width } from "../constants/Layout";
 
 const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
   const { top } = useSafeAreaInsets();
@@ -13,6 +14,8 @@ const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
         data={products}
         renderItem={({ item }) => <Card data={item} navigation={navigation} />}
         keyExtractor={({ id }) => id}
+        numColumns={2}
+        columnWrapperStyle={styles.row}
       />
     </View>
   );
@@ -23,7 +26,11 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "whitesmoke",
     alignItems: "center",
+  },
+  row: {
+    justifyContent: "space-evenly",
+    width: width,
   },
 });

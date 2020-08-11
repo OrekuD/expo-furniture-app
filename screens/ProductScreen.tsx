@@ -4,6 +4,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { height, width } from "../constants/Layout";
 import { Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAppContext } from "../context/Context";
 
 const IMAGE_SIZE = width * 0.7;
 const DOT_SIZE = 10;
@@ -11,6 +12,7 @@ const ACTIVE_DOT_SIZE = DOT_SIZE * 3;
 
 const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
   const { top } = useSafeAreaInsets();
+  const { toggleTabbar } = useAppContext();
   const scrollX = useRef(new Animated.Value(0)).current;
   const { data } = route.params;
   const { images, name, price, description } = data;
@@ -20,6 +22,15 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
     inputRange: activeDotInputRange,
     outputRange: [-ACTIVE_DOT_SIZE, 0, ACTIVE_DOT_SIZE],
   });
+
+  useEffect(() => {
+    toggleTabbar("hide");
+
+    return () => {
+      toggleTabbar("show");
+    };
+  }, []);
+
   return (
     <ScrollView style={{ ...styles.container, paddingTop: top }}>
       <View style={styles.topSection}>

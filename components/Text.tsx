@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text as RNText, View, StyleSheet, TextStyle } from "react-native";
 
 interface TextProps {
-  text: string;
+  text: string | number;
   style?: TextStyle;
   variant?: "default" | "title" | "tiny" | "subtitle";
 }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   tiny: {
-    fontFamily: "HeeboR",
+    fontFamily: "HeeboB",
     fontSize: 18,
   },
   subtitle: {

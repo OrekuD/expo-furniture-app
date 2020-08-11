@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Animated,
   TouchableOpacity,
+  Easing,
 } from "react-native";
 import { width } from "../constants/Layout";
 import {
@@ -17,6 +18,7 @@ import {
 } from "@react-navigation/native";
 import { AntDesign, MaterialCommunityIcons, Feather } from "@expo/vector-icons";
 import { BorderlessButton } from "react-native-gesture-handler";
+import { useAppContext } from "../context/Context";
 
 interface CustomTabProps {
   state: TabNavigationState;
@@ -50,6 +52,7 @@ const routes = [
 
 const CustomTab = ({ state, descriptors, navigation }: CustomTabProps) => {
   const translateY = useRef(new Animated.Value(70)).current;
+  const { tabbarState } = useAppContext();
 
   const animateTabbar = (state: "hide" | "show") => {
     if (state === "hide") {
@@ -57,15 +60,21 @@ const CustomTab = ({ state, descriptors, navigation }: CustomTabProps) => {
         toValue: 0,
         duration: 500,
         useNativeDriver: false,
+        easing: Easing.linear,
       }).start();
     } else if (state === "show") {
       Animated.timing(translateY, {
         toValue: 70,
         duration: 500,
         useNativeDriver: false,
+        easing: Easing.ease,
       }).start();
     }
   };
+
+  useEffect(() => {
+    animateTabbar(tabbarState);
+  }, [tabbarState]);
 
   return (
     <Animated.View style={{ ...styles.container, height: translateY }}>
