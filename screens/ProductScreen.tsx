@@ -5,7 +5,7 @@ import { height, width } from "../constants/Layout";
 import { Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const IMAGE_WIDTH = width * 0.6;
+const IMAGE_SIZE = width * 0.7;
 const DOT_SIZE = 10;
 const ACTIVE_DOT_SIZE = DOT_SIZE * 3;
 
@@ -23,14 +23,6 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
   return (
     <ScrollView style={{ ...styles.container, paddingTop: top }}>
       <View style={styles.topSection}>
-        <View style={{ ...styles.priceContainer }}>
-          <Text
-            text={`$${price}`}
-            variant="subtitle"
-            style={styles.priceText}
-          />
-        </View>
-
         <View style={styles.pagination}>
           <Animated.View
             style={{
@@ -136,8 +128,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    width: IMAGE_WIDTH,
-    height: IMAGE_WIDTH,
+    width: IMAGE_SIZE,
+    height: IMAGE_SIZE,
   },
   pagination: {
     position: "absolute",

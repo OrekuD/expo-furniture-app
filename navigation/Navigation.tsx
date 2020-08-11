@@ -6,8 +6,8 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import { BottomTabParamList, HomeStackParamsList } from "../types";
-import { HomeScreen, ProductScreen } from "../screens";
-import { View } from "react-native";
+import { HomeScreen, ProductScreen, CartScreen } from "../screens";
+import { CustomTabbar } from "../components";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const HomeStack = createStackNavigator<HomeStackParamsList>();
@@ -16,9 +16,13 @@ const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator
       tabBarOptions={{ keyboardHidesTabBar: true }}
-      screenOptions={{ tabBarVisible: false }}
+      // screenOptions={{ tabBarVisible: false }}
+      tabBar={({ descriptors, navigation, state }) => (
+        <CustomTabbar {...{ descriptors, navigation, state }} />
+      )}
     >
       <BottomTab.Screen name="Home" component={HomeNavigator} />
+      <BottomTab.Screen name="Cart" component={CartScreen} />
     </BottomTab.Navigator>
   );
 };
@@ -40,7 +44,6 @@ const HomeNavigator = () => {
 const MainNavigator = () => {
   return (
     <NavigationContainer>
-      <View />
       <BottomTabNavigator />
     </NavigationContainer>
   );
