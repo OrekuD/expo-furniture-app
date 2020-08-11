@@ -106,9 +106,12 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
       <View style={styles.bottomSection}>
         <Text text={name} variant="title" />
         <Text text={description} />
-        <RectButton style={styles.button}>
-          <Text text="Add to cart" variant="tiny" style={styles.buttonText} />
-        </RectButton>
+        <View style={styles.row}>
+          <RectButton style={styles.button}>
+            <Text text="Add to cart" variant="tiny" style={styles.buttonText} />
+          </RectButton>
+          <Text text={price} style={styles.priceText} variant="tiny" price />
+        </View>
       </View>
     </ScrollView>
   );
@@ -119,7 +122,7 @@ export default ProductScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f4f4f4",
   },
   topSection: {
     width: width,
@@ -135,14 +138,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   priceText: {
-    fontSize: 50,
+    fontSize: 24,
+    marginHorizontal: 10,
   },
   bottomSection: {
     flex: 1,
     width: width,
-    height: 1000,
+    paddingBottom: 20,
     padding: 10,
-    backgroundColor: "#f4f4f4",
   },
   imageContainer: {
     width: width,
@@ -180,13 +183,18 @@ const styles = StyleSheet.create({
     borderRadius: ACTIVE_DOT_SIZE * 0.5,
     borderWidth: 2,
   },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 15,
+  },
   button: {
-    width: width * 0.8,
-    height: 40,
-    borderRadius: 20,
+    flex: 1,
+    height: 50,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 10,
     backgroundColor: "purple",
     alignSelf: "center",
   },

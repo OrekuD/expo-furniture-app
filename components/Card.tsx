@@ -25,7 +25,7 @@ const Card = ({ data, navigation }: CardProps) => {
         resizeMode="contain"
       />
       <Text text={name} variant="tiny" />
-      <Text text={price} variant="tiny" style={styles.priceText} />
+      <Text text={price} variant="tiny" style={styles.priceText} price={true} />
     </RectButton>
   );
 };

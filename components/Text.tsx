@@ -5,9 +5,10 @@ interface TextProps {
   text: string | number;
   style?: TextStyle;
   variant?: "default" | "title" | "tiny" | "subtitle";
+  price?: boolean;
 }
 
-const Text = ({ text, style, variant }: TextProps) => {
+const Text = ({ text, style, variant, price }: TextProps) => {
   let textStyle;
   switch (variant) {
     case "default":
@@ -25,6 +26,10 @@ const Text = ({ text, style, variant }: TextProps) => {
 
     default:
       break;
+  }
+
+  if (price) {
+    return <RNText style={{ ...textStyle, ...style }}>&#8373; {text}</RNText>;
   }
   return <RNText style={{ ...textStyle, ...style }}>{text}</RNText>;
 };
