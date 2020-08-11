@@ -27,4 +27,5 @@ export interface ProductObj {
     color?: string;
   }>;
   price: number;
+  description?: string;
 }

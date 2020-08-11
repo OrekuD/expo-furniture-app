@@ -7,6 +7,7 @@ import {
 } from "@react-navigation/stack";
 import { BottomTabParamList, HomeStackParamsList } from "../types";
 import { HomeScreen, ProductScreen } from "../screens";
+import { View } from "react-native";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const HomeStack = createStackNavigator<HomeStackParamsList>();
@@ -39,6 +40,7 @@ const HomeNavigator = () => {
 const MainNavigator = () => {
   return (
     <NavigationContainer>
+      <View />
       <BottomTabNavigator />
     </NavigationContainer>
   );

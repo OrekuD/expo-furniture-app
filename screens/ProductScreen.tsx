@@ -1,16 +1,19 @@
 import React, { useRef, useEffect } from "react";
-import { Text, View, StyleSheet, ScrollView, Animated } from "react-native";
+import { View, StyleSheet, ScrollView, Animated } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { height, width } from "../constants/Layout";
+import { Text } from "../components";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const IMAGE_WIDTH = width * 0.6;
 const DOT_SIZE = 10;
 const ACTIVE_DOT_SIZE = DOT_SIZE * 3;
 
 const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
+  const { top } = useSafeAreaInsets();
   const scrollX = useRef(new Animated.Value(0)).current;
   const { data } = route.params;
-  const { images, name, price } = data;
+  const { images, name, price, description } = data;
 
   const activeDotInputRange = [-width, 0, width];
   const activeDotTranslateX = scrollX.interpolate({
@@ -18,25 +21,34 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
     outputRange: [-ACTIVE_DOT_SIZE, 0, ACTIVE_DOT_SIZE],
   });
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={{ ...styles.container, paddingTop: top }}>
       <View style={styles.topSection}>
-        <View style={styles.pagination}>
-          <Animated.View
-            style={{
-              ...styles.activeDot,
-              transform: [{ translateX: activeDotTranslateX }],
-            }}
+        <View style={{ ...styles.priceContainer }}>
+          <Text
+            text={`$${price}`}
+            variant="subtitle"
+            style={styles.priceText}
           />
-          {images.map(({ color }, index) => {
-            return (
-              <View key={index} style={styles.dotContainer}>
-                <Animated.View
-                  style={{ ...styles.dot, backgroundColor: color }}
-                ></Animated.View>
-              </View>
-            );
-          })}
         </View>
+        {images[0].color && (
+          <View style={styles.pagination}>
+            <Animated.View
+              style={{
+                ...styles.activeDot,
+                transform: [{ translateX: activeDotTranslateX }],
+              }}
+            />
+            {images.map(({ color }, index) => {
+              return (
+                <View key={index} style={styles.dotContainer}>
+                  <Animated.View
+                    style={{ ...styles.dot, backgroundColor: color }}
+                  ></Animated.View>
+                </View>
+              );
+            })}
+          </View>
+        )}
         <Animated.ScrollView
           pagingEnabled
           horizontal
@@ -76,6 +88,10 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
           })}
         </Animated.ScrollView>
       </View>
+      <View style={styles.bottomSection}>
+        <Text text={name} variant="title" />
+        <Text text={description} />
+      </View>
     </ScrollView>
   );
 };
@@ -85,13 +101,31 @@ export default ProductScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#fff",
   },
   topSection: {
     width: width,
     height: height * 0.6,
     backgroundColor: "#ffffff",
     position: "relative",
+  },
+  priceContainer: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    // backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  priceText: {
+    fontSize: 50,
+  },
+  bottomSection: {
+    flex: 1,
+    width: width,
+    height: 1000,
+    padding: 10,
+    backgroundColor: "#f4f4f4",
   },
   imageContainer: {
     width: width,
