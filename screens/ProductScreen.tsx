@@ -25,13 +25,19 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
     outputRange: [-ACTIVE_DOT_SIZE, 0, ACTIVE_DOT_SIZE],
   });
 
-  const activeDotColorInputRange = [...images.map((_, index) => index * width)];
-  const activeDotColorOutputRange = [...images.map((image) => image.color)];
+  let activeDotColorInputRange;
+  let activeDotColorOutputRange;
+  let activeDotColor = images[0].color;
 
-  const activeDotColor = scrollX.interpolate({
-    inputRange: activeDotColorInputRange,
-    outputRange: activeDotColorOutputRange,
-  });
+  if (images.length > 1) {
+    activeDotColorInputRange = [...images.map((_, index) => index * width)];
+    activeDotColorOutputRange = [...images.map((image) => image.color)];
+
+    activeDotColor = scrollX.interpolate({
+      inputRange: activeDotColorInputRange,
+      outputRange: activeDotColorOutputRange,
+    });
+  }
 
   useEffect(() => {
     toggleTabbar("hide");
