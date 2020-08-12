@@ -6,6 +6,7 @@ import { Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAppContext } from "../context/Context";
 import { RectButton } from "react-native-gesture-handler";
+import { IMAGE_BASE_URL } from "../constants/Urls";
 
 const IMAGE_SIZE = width * 0.7;
 const DOT_SIZE = 10;
@@ -94,7 +95,7 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
             return (
               <View style={styles.imageContainer} key={index}>
                 <Animated.Image
-                  source={source}
+                  source={{ uri: `${IMAGE_BASE_URL}${source}` }}
                   resizeMode="contain"
                   style={{ ...styles.image, opacity, transform: [{ scale }] }}
                 />

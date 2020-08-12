@@ -4,6 +4,7 @@ import { ProductObj } from "../types";
 import { RectButton } from "react-native-gesture-handler";
 import { width } from "../constants/Layout";
 import Text from "./Text";
+import { IMAGE_BASE_URL } from "../constants/Urls";
 
 interface CardProps {
   data: ProductObj;
@@ -20,7 +21,7 @@ const Card = ({ data, navigation }: CardProps) => {
       style={styles.container}
     >
       <Image
-        source={images[0].source}
+        source={{ uri: `${IMAGE_BASE_URL}${images[0].source}` }}
         style={styles.image}
         resizeMode="contain"
       />

@@ -24,7 +24,7 @@ export interface ProductObj {
   name: string;
   images: Array<{
     id: string;
-    source: ImageRequireSource;
+    source: string;
     color?: string;
   }>;
   price: number;

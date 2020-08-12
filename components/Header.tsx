@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
-import { View, StyleSheet, Animated } from "react-native";
+import React, { useRef, useEffect, useState } from "react";
+import { View, StyleSheet, Animated, Alert } from "react-native";
 import { width } from "../constants/Layout";
-import { recommendedProducts } from "../data/products";
+// import { recommendedProducts } from "../data/products";
 import { RectButton } from "react-native-gesture-handler";
 import Text from "./Text";
+import { BASE_URL, IMAGE_BASE_URL } from "../constants/Urls";
+import { ProductObj } from "../types";
 
 interface HeaderProps {
   navigation: any;
@@ -13,6 +15,21 @@ const ITEM_SIZE = width * 0.9 + width * 0.033;
 
 const Header = ({ navigation }: HeaderProps) => {
   const scrollX = useRef(new Animated.Value(0)).current;
+  const [products, setProducts] = useState<Array<ProductObj>>([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/products/recommended`);
+      const data = await response.json();
+      setProducts(data.products);
+    } catch (error) {
+      Alert.alert("Ahh");
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -31,7 +48,7 @@ const Header = ({ navigation }: HeaderProps) => {
           { useNativeDriver: false }
         )}
       >
-        {recommendedProducts.map((item, index) => {
+        {products.map((item, index) => {
           const { name, images, price, description, id } = item;
           return (
             <RectButton
@@ -40,7 +57,7 @@ const Header = ({ navigation }: HeaderProps) => {
               style={{ ...styles.item }}
             >
               <Animated.Image
-                source={images[0].source}
+                source={{ uri: `${IMAGE_BASE_URL}${images[0].source}` }}
                 style={{ ...styles.image }}
                 resizeMode="contain"
               />
