@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList, Alert } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import { products } from "../data/products";
 import { Card, Header } from "../components";
@@ -11,6 +18,7 @@ import { BASE_URL } from "../constants/Urls";
 const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
   const { top } = useSafeAreaInsets();
   const [products, setProducts] = useState<Array<ProductObj>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetchProducts();
@@ -21,6 +29,7 @@ const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
       const response = await fetch(`${BASE_URL}/products`);
       const data = await response.json();
       setProducts(data.products);
+      setIsLoading(false);
     } catch (error) {
       Alert.alert("Ahh");
     }
@@ -28,14 +37,24 @@ const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
 
   return (
     <View style={{ ...styles.container, paddingTop: top }}>
-      <FlatList
-        data={products}
-        renderItem={({ item }) => <Card data={item} navigation={navigation} />}
-        ListHeaderComponent={() => <Header navigation={navigation} />}
-        keyExtractor={({ id }) => id}
-        numColumns={2}
-        columnWrapperStyle={styles.row}
-      />
+      {isLoading ? (
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <ActivityIndicator size="large" color="darkslategrey" />
+        </View>
+      ) : (
+        <FlatList
+          data={products}
+          renderItem={({ item }) => (
+            <Card data={item} navigation={navigation} />
+          )}
+          ListHeaderComponent={() => <Header navigation={navigation} />}
+          keyExtractor={({ id }) => id}
+          numColumns={2}
+          columnWrapperStyle={styles.row}
+        />
+      )}
     </View>
   );
 };

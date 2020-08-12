@@ -1,5 +1,3 @@
-import { ImageRequireSource } from "react-native";
-
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
@@ -31,7 +29,18 @@ export interface ProductObj {
   description?: string;
 }
 
+export interface CartObj extends ProductObj {
+  count: number;
+  total: number;
+}
+
 export interface AppContext {
   toggleTabbar: (state: "hide" | "show") => void;
   tabbarState: "hide" | "show";
+  cart: CartObj[];
+  manageCart: (
+    action: "ADD" | "REMOVE" | "EMPTY" | "INCREASE" | "DECREASE",
+    payload?: CartObj | ProductObj
+  ) => void;
+  isProductInCart: (product: ProductObj) => boolean;
 }
