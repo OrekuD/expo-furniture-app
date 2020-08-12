@@ -14,7 +14,7 @@ const ACTIVE_DOT_SIZE = DOT_SIZE * 3;
 
 const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
   const { top } = useSafeAreaInsets();
-  const { toggleTabbar } = useAppContext();
+  const { toggleTabbar, isProductInCart, manageCart } = useAppContext();
   const scrollX = useRef(new Animated.Value(0)).current;
   const { data } = route.params;
   const { images, name, price, description } = data;
@@ -114,9 +114,29 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
         <Text text={name} variant="title" />
         <Text text={description} />
         <View style={styles.row}>
-          <RectButton style={styles.button}>
-            <Text text="Add to cart" variant="tiny" style={styles.buttonText} />
-          </RectButton>
+          {isProductInCart(data) ? (
+            <RectButton
+              style={styles.button}
+              onPress={() => manageCart("REMOVE", data)}
+            >
+              <Text
+                text="Remove from cart"
+                variant="tiny"
+                style={styles.buttonText}
+              />
+            </RectButton>
+          ) : (
+            <RectButton
+              style={styles.button}
+              onPress={() => manageCart("ADD", data)}
+            >
+              <Text
+                text="Add to cart"
+                variant="tiny"
+                style={styles.buttonText}
+              />
+            </RectButton>
+          )}
           <Text text={price} style={styles.priceText} variant="tiny" price />
         </View>
       </View>

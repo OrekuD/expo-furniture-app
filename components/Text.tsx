@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   tiny: {
     fontFamily: "HeeboB",
-    fontSize: 18,
+    fontSize: 16,
   },
   subtitle: {
     fontFamily: "HeeboM",
