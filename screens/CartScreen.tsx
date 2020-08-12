@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useAppContext } from "../context/Context";
-import { CartItem } from "../components";
+import { CartItem, Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface CartScreenProps {}
@@ -12,7 +12,7 @@ const CartScreen = (props: CartScreenProps) => {
   return (
     <View style={{ ...styles.container, paddingTop: top }}>
       <View style={styles.header}>
-        <Text>CartScreen</Text>
+        <Text text="Cart" variant="title" />
       </View>
       <FlatList
         data={cart}
@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    height: 70,
+    height: 80,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 25,
+    paddingTop: 10,
   },
 });

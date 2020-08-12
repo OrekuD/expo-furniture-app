@@ -33,6 +33,7 @@ const Header = ({ navigation }: HeaderProps) => {
 
   return (
     <View style={styles.container}>
+      <Text text="Categories" variant="title" style={styles.title} />
       <Animated.ScrollView
         pagingEnabled
         horizontal
@@ -74,7 +75,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 240,
     marginVertical: 20,
     width: ITEM_SIZE,
     borderRadius: 50,
@@ -83,13 +84,18 @@ const styles = StyleSheet.create({
   },
   item: {
     width: ITEM_SIZE,
-    height: "100%",
+    borderRadius: 50,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#fff",
+    marginRight: 5,
   },
   image: {
     width: ITEM_SIZE,
     height: 100,
+  },
+  title: {
+    marginLeft: 10,
   },
 });

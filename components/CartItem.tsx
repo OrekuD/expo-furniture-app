@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    width: "55%",
+    width: "53%",
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: "space-between",
     alignItems: "center",
+    paddingRight: 5,
   },
   button: {
     width: 40,
