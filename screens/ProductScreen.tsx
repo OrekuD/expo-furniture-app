@@ -5,8 +5,9 @@ import { height, width } from "../constants/Layout";
 import { Text } from "../components";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAppContext } from "../context/Context";
-import { RectButton } from "react-native-gesture-handler";
+import { RectButton, BorderlessButton } from "react-native-gesture-handler";
 import { IMAGE_BASE_URL } from "../constants/Urls";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const IMAGE_SIZE = width * 0.7;
 const DOT_SIZE = 10;
@@ -50,6 +51,13 @@ const ProductScreen = ({ navigation, route }: StackScreenProps<{}>) => {
   return (
     <ScrollView style={{ ...styles.container, paddingTop: top }}>
       <View style={styles.topSection}>
+        <BorderlessButton onPress={navigation.goBack} style={styles.backIcon}>
+          <MaterialCommunityIcons
+            name="chevron-left"
+            color="#121212"
+            size={40}
+          />
+        </BorderlessButton>
         <View style={styles.pagination}>
           <Animated.View
             style={{
@@ -179,6 +187,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   },
   image: {
     width: IMAGE_SIZE,
@@ -228,5 +237,15 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: "#ffffff",
+  },
+  backIcon: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    height: 40,
+    width: 40,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

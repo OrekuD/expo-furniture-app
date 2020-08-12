@@ -14,11 +14,19 @@ const CartScreen = (props: CartScreenProps) => {
       <View style={styles.header}>
         <Text text="Cart" variant="title" />
       </View>
-      <FlatList
-        data={cart}
-        keyExtractor={({ id }) => id}
-        renderItem={({ item }) => <CartItem item={item} />}
-      />
+      {cart.length === 0 ? (
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Text text="No items in cart" variant="tiny" />
+        </View>
+      ) : (
+        <FlatList
+          data={cart}
+          keyExtractor={({ id }) => id}
+          renderItem={({ item }) => <CartItem item={item} />}
+        />
+      )}
     </View>
   );
 };

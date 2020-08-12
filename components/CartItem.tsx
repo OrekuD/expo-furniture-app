@@ -58,7 +58,7 @@ export default CartItem;
 const styles = StyleSheet.create({
   container: {
     width: width * 0.9,
-    height: 200,
+    height: 170,
     backgroundColor: "#ffffff",
     borderRadius: 50,
     marginBottom: 20,
