@@ -1,8 +1,3 @@
-export type RootStackParamList = {
-  Root: undefined;
-  NotFound: undefined;
-};
-
 export type BottomTabParamList = {
   Home: undefined;
   Cart: undefined;
@@ -11,10 +6,6 @@ export type BottomTabParamList = {
 export type HomeStackParamsList = {
   Home: undefined;
   Product: undefined;
-};
-
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
 };
 
 export interface ProductObj {
