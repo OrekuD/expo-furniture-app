@@ -23,11 +23,13 @@ const Header = ({ navigation }: HeaderProps) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/products/recommended`);
+      const response = await fetch(
+        `${BASE_URL}/products/furniture/recommended`
+      );
       const data = await response.json();
       setProducts(data.products);
     } catch (error) {
-      Alert.alert("Ahh");
+      Alert.alert("Connection error", "Please try again later");
     }
   };
 

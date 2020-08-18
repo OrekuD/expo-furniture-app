@@ -26,12 +26,12 @@ const HomeScreen = ({ navigation }: BottomTabScreenProps<{}>) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/products`);
+      const response = await fetch(`${BASE_URL}/products/furniture`);
       const data = await response.json();
       setProducts(data.products);
       setIsLoading(false);
     } catch (error) {
-      Alert.alert("Ahh");
+      Alert.alert("Connection error", "Please try again later");
     }
   };
 
